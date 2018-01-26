@@ -3,8 +3,6 @@ version: '2'
 services:
   kuzzle:
     image: kuzzleio/kuzzle
-    ports:
-      - "7512:7512"
     cap_add:
       - SYS_PTRACE
     depends_on:
@@ -27,12 +25,8 @@ services:
   elasticsearch:
     image: kuzzleio/elasticsearch:5.4.1
     environment:
-      - cluster.name=kuzzle
+      - cluster.name=kibana-elastic
       # disable xpack
-      - xpack.security.enabled=false
-      - xpack.monitoring.enabled=false
-      - xpack.graph.enabled=false
-      - xpack.watcher.enabled=false
       - http.host=0.0.0.0
       - transport.host=0.0.0.0
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
@@ -45,9 +39,7 @@ services:
       - SERVER_HOST=0.0.0.0
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
-    ports:
-      - 5601:5601
     labels:
       consul.service: web
       consul.tags: kibana-kuzzle
-
+      consul.port: '5601'
