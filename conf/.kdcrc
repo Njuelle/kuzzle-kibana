@@ -19,7 +19,7 @@
     },
     "kdc-bigquery-connector": {
       "projectId": "local-receiver-192608",
-      "dataSet": "probes-iot",
+      "dataSet": "probes_iot",
       "credentials": {
       },
       "probes": {
