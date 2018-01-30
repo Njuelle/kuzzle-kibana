@@ -15,7 +15,6 @@ services:
       - NODE_ENV=production
     volumes:
       - "./protocol-mqtt:/var/app/protocols/enabled/protocol-mqtt"
-      - "./../kuzzle-enterprise-probe-listener:/var/app/plugins/enabled/kuzzle-enterprise-probe-listener/"
       - "./conf/.kuzzlerc:/etc/.kuzzlerc"
     ports:
       - "9000:1883"
