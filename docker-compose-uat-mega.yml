@@ -39,6 +39,46 @@ services:
     labels:
       consul.skip: "true"
 
+  kdc-kuzzle:
+    image: kuzzleio/kuzzle
+    ports:
+    #   - "7515:7512"
+      - "9229:9229"
+    cap_add:
+      - SYS_PTRACE
+    depends_on:
+      - kdc-redis
+      - kdc-elasticsearch
+    volumes:
+      - "./../kuzzle-enterprise-probe:/var/app/plugins/enabled/kuzzle-enterprise-probe/"
+      - "./../kdc-bigquery-connector/:/var/app/plugins/enabled/kdc-bigquery-connector/"
+      - "./conf/.kdcrc:/etc/kuzzlerc"
+    environment:
+      - kuzzle_services__db__client__host=http://kdc-elasticsearch:9200
+      - kuzzle_services__internalCache__node__host=kdc-redis
+      - kuzzle_services__memoryStorage__node__host=kdc-redis
+      - NODE_ENV=production
+    labels:
+      consul.service: kuzzle
+      consol.ports: '7515'
+
+  kdc-redis:
+    image: redis:3.2
+    labels:
+      consul.skip: "true"
+
+  kdc-elasticsearch:
+    image: kuzzleio/elasticsearch:5.4.1
+    environment:
+      - cluster.name=kuzzle
+      # disable xpack
+      - xpack.security.enabled=false
+      - xpack.monitoring.enabled=false
+      - xpack.graph.enabled=false
+      - xpack.watcher.enabled=false
+    labels:
+      consul.skip: "true"
+
   kibana:
     image: docker.elastic.co/kibana/kibana:5.4.1
     environment:
