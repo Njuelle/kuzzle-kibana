@@ -1,0 +1,12 @@
+{
+  "server": {
+    "protocols": {
+      "mqtt": {
+        "allowPubSub": true
+        "server": {
+            "port" : 1883
+        }
+      }
+    }
+  }
+}
