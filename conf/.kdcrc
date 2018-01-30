@@ -1,7 +1,7 @@
 {
   "plugins": {
     "kuzzle-enterprise-probe": {
-      "storageIndex": "probestest",
+      "storageIndex": "probes_iot",
       "probes": {
         "probe_watcher_1": {
           "type":"watcher",

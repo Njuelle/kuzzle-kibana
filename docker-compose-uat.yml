@@ -52,7 +52,7 @@ services:
     volumes:
       - "./../kuzzle-enterprise-probe:/var/app/plugins/enabled/kuzzle-enterprise-probe/"
       - "./../kdc-bigquery-connector/:/var/app/plugins/enabled/kdc-bigquery-connector/"
-      - "./conf/.kdcrc:/etc/.kuzzlerc"
+      - "./conf/.kdcrc:/etc/kuzzlerc"
     environment:
       - kuzzle_services__db__client__host=http://kdc-elasticsearch:9200
       - kuzzle_services__internalCache__node__host=kdc-redis
