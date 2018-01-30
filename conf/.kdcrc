@@ -1,0 +1,57 @@
+{
+  "plugins": {
+    "kuzzle-enterprise-probe": {
+      "storageIndex": "probestest",
+      "probes": {
+        "probe_watcher_1": {
+          "type":"watcher",
+          "index": "iot",
+          "collection": "devie-state",
+          "action": "create",
+          "collects": [
+            "_meta.createdAt",
+            "state.temperature",
+            "state.light_level",
+            "state.relative_humidity",
+          ]
+        }
+      }
+    },
+    "kdc-bigquery-connector": {
+      "projectId": "local-receiver-192608",
+      "dataSet": "probes-iot",
+      "credentials": {
+      },
+      "probes": {
+        "probe_watcher_1": {
+          "type": "watcher",
+          "tableName": "iot",
+          "schema": {
+            "fields": [
+              {
+                "name": "createdAt",
+                "type": "DATE",
+                "mode": "NULLABLE"
+              },
+              {
+                "name": "temperature",
+                "type": "FLOAT",
+                "mode": "NULLABLE"
+              },
+              {
+                "name": "light_level",
+                "type": "FLOAT",
+                "mode": "NULLABLE"
+              },
+              {
+                "name": "relative_humidity",
+                "type": "FLOAT",
+                "mode": "NULLABLE"
+              }
+            ]
+          }
+        },
+      }
+    }
+  }
+}

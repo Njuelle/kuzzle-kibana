@@ -1,0 +1,28 @@
+{
+  "server": {
+    "protocols": {
+      "mqtt": {
+        "allowPubSub": true
+        "port" : 9000
+      }
+    }
+  },
+
+  "plugins": {
+    "kuzzle-enterprise-probe-listener": {
+      "threads": 1,
+      "probes": {
+          "probe_watcher_1": {
+              "type":"watcher",
+              "index": "iot",
+              "collection": "device-state",
+              "controller": "realtime",
+              "action": "publish",
+              "collects": [
+                "echo", "number"
+              ]
+          }
+      }
+    }
+  }
+}
