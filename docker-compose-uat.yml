@@ -17,7 +17,7 @@ services:
       - /home/kuzzle/app/njuelle/kuzzle-kibana/protocol-mqtt:/var/app/protocols/enabled/protocol-mqtt
       - ./.kuzzlerc:/etc/.kuzzlerc
     ports:
-      - "9000:9000"
+      - "9000:1883"
     labels:
       consul.service: kuzzle
       consul.tags: kuzzle-kibana
