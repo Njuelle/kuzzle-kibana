@@ -3,9 +3,7 @@
     "protocols": {
       "mqtt": {
         "allowPubSub": true
-        "server": {
-            "port" : 1883
-        }
+        "port" : 9000
       }
     }
   }
