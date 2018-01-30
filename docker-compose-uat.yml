@@ -15,7 +15,7 @@ services:
       - NODE_ENV=production
     volumes:
       - "./protocol-mqtt:/var/app/protocols/enabled/protocol-mqtt"
-      - "/home/kuzzle/app/njuelle/kuzzle-enterprise-probe:/var/app/plugins/enabled/kuzzle-enterprise-probe-listener/"
+      - "./../kuzzle-enterprise-probe-listener:/var/app/plugins/enabled/kuzzle-enterprise-probe-listener/"
       - "./conf/.kuzzlerc:/etc/.kuzzlerc"
     ports:
       - "9000:1883"
@@ -50,7 +50,7 @@ services:
       - kdc-redis
       - kdc-elasticsearch
     volumes:
-      - "./:/var/app/plugins/enabled/kuzzle-enterprise-probe/"
+      - "./../kuzzle-enterprise-probe:/var/app/plugins/enabled/kuzzle-enterprise-probe/"
       - "./../kdc-bigquery-connector/:/var/app/plugins/enabled/kdc-bigquery-connector/"
       - "./conf/.kdcrc:/etc/.kuzzlerc"
     environment:
