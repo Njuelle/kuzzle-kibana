@@ -2,7 +2,7 @@
   "server": {
     "protocols": {
       "mqtt": {
-        "allowPubSub": true
+        "allowPubSub": true,
         "port" : 9000
       }
     }
