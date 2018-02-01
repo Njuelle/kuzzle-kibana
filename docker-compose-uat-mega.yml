@@ -42,7 +42,7 @@ services:
   kdc-kuzzle:
     image: kuzzleio/kuzzle
     ports:
-    #   - "7515:7512"
+      - "7515:7512"
       - "9229:9229"
     cap_add:
       - SYS_PTRACE
@@ -60,7 +60,7 @@ services:
       - NODE_ENV=production
     labels:
       consul.service: kuzzle
-      consol.ports: '7515'
+      consol.ports: '7512'
 
   kdc-redis:
     image: redis:3.2
