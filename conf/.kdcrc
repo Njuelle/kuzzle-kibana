@@ -6,13 +6,12 @@
         "probe_watcher_1": {
           "type":"watcher",
           "index": "iot",
-          "collection": "devie-state",
+          "collection": "device-state",
           "action": "create",
           "collects": [
-            "_meta.createdAt",
             "state.temperature",
             "state.light_level",
-            "state.relative_humidity",
+            "state.relative_humidity"
           ]
         }
       }
@@ -25,14 +24,10 @@
       "probes": {
         "probe_watcher_1": {
           "type": "watcher",
-          "tableName": "iot",
+          "tableName": "sensor",
+          "timestamp": "true",
           "schema": {
             "fields": [
-              {
-                "name": "createdAt",
-                "type": "DATE",
-                "mode": "NULLABLE"
-              },
               {
                 "name": "temperature",
                 "type": "FLOAT",

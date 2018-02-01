@@ -12,16 +12,17 @@
     "kuzzle-enterprise-probe-listener": {
       "threads": 1,
       "probes": {
-          "probe_watcher_1": {
-              "type":"watcher",
-              "index": "iot",
-              "collection": "device-state",
-              "controller": "realtime",
-              "action": "publish",
-              "collects": [
-                "echo", "number"
-              ]
-          }
+        "probe_watcher_1": {
+          "type":"watcher",
+          "index": "iot",
+          "collection": "device-state",
+          "action": "create",
+          "collects": [
+            "state.temperature",
+            "state.light_level",
+            "state.relative_humidity"
+          ]
+        }
       }
     }
   }
