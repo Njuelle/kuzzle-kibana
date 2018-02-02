@@ -13,6 +13,11 @@ services:
       - kuzzle_services__internalCache__node__host=redis
       - kuzzle_services__memoryStorage__node__host=redis
       - NODE_ENV=production
+    volumes:
+      - "./../protocol-mqtt:/var/app/protocols/enabled/protocol-mqtt"
+      - "./.kuzzlerc:/etc/kuzzlerc"
+    ports:
+      - "9001:1883"
     labels:
       consul.service: kuzzle
       consul.tags: kuzzle-kibana
